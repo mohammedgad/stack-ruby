@@ -9,7 +9,7 @@ class Stack
   def push(n)
     @arr.push n
     @sum += n
-    if @max.length == 0 || @max.last < n
+    if @max.length == 0 || @max.last < n || @max.last == n
       @max.push(n)
     end
   end
@@ -20,10 +20,6 @@ class Stack
       @max.pop
     end
     @sum -= n
-  end
-
-  def empty?
-    !!(@arr.length == 0)
   end
 
   def max
