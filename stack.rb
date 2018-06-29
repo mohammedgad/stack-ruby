@@ -3,19 +3,23 @@ class Stack
   def initialize()
     @arr = Array.new
     @max = Array.new
+    @sum = 0
   end
 
   def push(n)
     @arr.push n
+    @sum += n
     if @max.length == 0 || @max.last < n
       @max.push(n)
     end
   end
 
   def pop
-    if @arr.pop == @max.last
+    n = @arr.pop
+    if n == @max.last
       @max.pop
     end
+    @sum -= n
   end
 
   def empty?
@@ -27,18 +31,6 @@ class Stack
   end
 
   def display
-    puts @arr
+    puts "array\n#{@arr}\n--------------------\nMAX\n#{@max}\n--------------------\nSUM\n#{@sum}"
   end
 end
-
-
-s = Stack.new()
-s.push(7)
-s.push(8)
-s.push(8)
-s.push(9)
-s.push(0)
-s.display
-puts "/n---------------------------------------/n"
-s.max
-puts s.empty?
